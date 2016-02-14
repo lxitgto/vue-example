@@ -18,7 +18,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" v-link="{ path: '/main/conferences' }">电话会议系统</a>
+                    <a class="navbar-brand" v-link="{ path: '/main/conferences' }">会议系统</a>
                 </div>
                 <!--/.navbar-header -->
                 <div id="navbar" class="navbar-collapse collapse">

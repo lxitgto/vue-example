@@ -64,7 +64,7 @@ Vue.directive( 'checked', function( val ){
 
 // create router
 const router =new VueRouter({
-    root: "/conference",
+    root: "/vue-example",
     history: true,
     _saveScrollPosition: false
 });

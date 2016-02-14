@@ -18,6 +18,33 @@ export function configRouter (router) {
                     component: require('./components/main/conferences.vue'),
                     auth: true,
                     mpath: 'conferences'
+                },
+                '/settings': {
+                    component: require('./components/main/settings.vue'),
+                    auth: true,
+                    mpath: 'settings',
+                    subRoutes: {
+                        '/customerInfo': {
+                            component: require('./components/main/settings/customerInfo.vue'),
+                            auth: true,
+                            cpath: 'customerInfo'
+                        },
+                        '/customerSetting': {
+                            component: require('./components/main/settings/customerSetting.vue'),
+                            auth: true,
+                            cpath: 'customerSetting'
+                        },
+                        '/userInfo': {
+                            component: require('./components/main/settings/userInfo.vue'),
+                            auth: true,
+                            cpath: 'userInfo'
+                        },
+                        '/changePassword': {
+                            component: require('./components/main/settings/changePassword.vue'),
+                            auth: true,
+                            cpath: 'changePassword'
+                        }
+                    }
                 }
             }
         },
