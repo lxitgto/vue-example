@@ -24,10 +24,10 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="{{ navClass('conferences') }}"><a v-link="{ path: '/main/conferences' }">会议室</a></li>
-                        <li class="{{ navClass('settings') }}"><a v-link="{ path: '/main/settings/customerInfo' }">系统设置</a></li>
+                        <li class="{{ navClass('settings') }}"><a v-link="{ path: '/main/settings/userInfo' }">系统设置</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a>欢迎{{ customer.name }}的{{ user.name }} 您的账户余额: {{ customer.balance | currency '¥'}}元</a></li>
+                        <li><a>欢迎您{{ user.name }} 您的账户余额: {{ user.balance | currency '¥'}}元</a></li>
                         <li><a href="#"><span class="label label-info">账户充值</span> </a></li>
                         <li><a @click.stop.prevent="logout()" href="#"><i class="icon-off"> </i> 退出</a></li>
                         <li><a href="#"><i class="icon-question-sign"> </i> 帮助中心</a></li>
@@ -47,13 +47,11 @@
 
 <script type="text/babel">
     import auth from '../services/auth.js'
-    import customerservice from '../services/customer.js'
 
     export default {
         data () {
             return {
                 user: '',
-                customer: '',
                 error: ''
             }
         },
@@ -62,8 +60,7 @@
                 var user = ''
                 var customer = ''
                 var p1 = auth.getUser().then(response => user = response.user)
-                var p2 = customerservice.getCustomer().then(response => customer = response.customer)
-                Promise.all([p1, p2]).then(() => next({user: user, customer: customer})).catch(() => this.$dispatch('userHasLoggedOut'))
+                Promise.all([p1]).then(() => next({user: user})).catch(() => this.$dispatch('userHasLoggedOut'))
             }
         },
         methods: {

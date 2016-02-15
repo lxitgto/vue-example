@@ -24,16 +24,6 @@ export function configRouter (router) {
                     auth: true,
                     mpath: 'settings',
                     subRoutes: {
-                        '/customerInfo': {
-                            component: require('./components/main/settings/customerInfo.vue'),
-                            auth: true,
-                            cpath: 'customerInfo'
-                        },
-                        '/customerSetting': {
-                            component: require('./components/main/settings/customerSetting.vue'),
-                            auth: true,
-                            cpath: 'customerSetting'
-                        },
                         '/userInfo': {
                             component: require('./components/main/settings/userInfo.vue'),
                             auth: true,

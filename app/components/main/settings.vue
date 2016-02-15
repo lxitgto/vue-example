@@ -5,12 +5,6 @@
     <div class="row">
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked">
-                <li role="presentation" class="{{ navClass('customerInfo') }}">
-                    <a v-link="{ path: '/main/settings/customerInfo' }">帐户信息</a>
-                </li>
-                <li role="presentation" class="{{ navClass('customerSetting') }}">
-                    <a v-link="{ path: '/main/settings/customerSetting' }">企业设置</a>
-                </li>
                 <li role="presentation" class="{{ navClass('userInfo') }}">
                     <a v-link="{ path: '/main/settings/userInfo' }">个人信息</a>
                 </li>
