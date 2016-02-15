@@ -1,0 +1,108 @@
+swagger: '2.0'
+info:
+  description: >
+    Vue-example项目API文档
+  version: 1.0.0
+  title: Conference API
+  termsOfService: 'localhost'
+  contact:
+    name: lxitgto@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: 127.0.0.1:8080
+basePath: /v1
+schemes:
+  - http
+paths:
+  /user/login:
+      post:
+        tags:
+          - user
+        summary: 用户登录
+        description: 用户登录
+        operationId: loginUser
+        produces:
+          - application/json
+        parameters:
+          - in: body
+            name: body
+            description: login对象
+            required: true
+            schema:
+              $ref: '#/definitions/Login'
+        responses:
+          '200':
+            description: Authentication was successful
+            schema:
+              $ref: '#/definitions/jwtToken'
+          '400':
+            description: Invalid username/password supplied
+  /user:
+      get:
+        tags:
+          - user
+        summary: get user info
+        description: This can only be done by the logged in user.
+        operationId: getUserInfo
+        produces:
+          - application/json
+        security:
+          - Bearer: []
+        responses:
+          '200':
+            description: Authentication was successful
+            schema:
+              $ref: '#/definitions/jwtToken'
+          "404":
+            description: User not found
+          "400":
+            description: Invalid user supplied
+      post:
+        tags:
+          - user
+        summary: 注册新用户
+        description: 注册新用户
+        operationId: createUser
+        produces:
+          - application/json
+        parameters:
+          - in: body
+            name: body
+            description: user对象
+            required: true
+            schema:
+              $ref: '#/definitions/User'
+        responses:
+          '201':
+            description: successful operation
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: JWT auth
+definitions:
+  User:
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      balance:
+        type: string
+  Login:
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+  jwtToken:
+    type: object
+    properties:
+      jwtToken:
+        type: string
